@@ -3,12 +3,21 @@ import { CiPhone } from "react-icons/ci";
 import { IoCalendarOutline, IoLocationOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { saveJobApplication } from "../../utility/localStorage";
 
 const JobDetails = () => {
   const jobs = useLoaderData();
   const { id } = useParams();
   const idInt = parseInt(id);
   const job = jobs.find((job) => job.id === idInt);
+
+  const handleApplyJob = () => {
+    saveJobApplication(id);
+    toast("You have applied successfully");
+  };
+
   return (
     <div>
       <h2 className="text-[32px] font-extrabold text-center my-28">
@@ -78,10 +87,13 @@ const JobDetails = () => {
             </h2>
           </div>
           <div className="mb-32">
-            <button className="btn btn-primary w-full">Apply Now</button>
+            <button onClick={handleApplyJob} className="btn btn-primary w-full">
+              Apply Now
+            </button>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
