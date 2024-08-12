@@ -1,3 +1,6 @@
+import { AiOutlineDollar } from "react-icons/ai";
+import { CiLocationOn } from "react-icons/ci";
+
 const Job = ({ job }) => {
   const {
     logo,
@@ -11,7 +14,7 @@ const Job = ({ job }) => {
   return (
     <div className="card card-compact bg-base-100 shadow-xl">
       <figure>
-        <img className="h-10" src={logo} alt="" />
+        <img className="h-10 " src={logo} alt="" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{job_title}</h2>
@@ -24,8 +27,20 @@ const Job = ({ job }) => {
             {job_type}
           </button>
         </div>
+        <div className="mt-4 flex">
+          <h2 className="flex mr-6">
+            <CiLocationOn className="text-2xl mr-2" />
+            {location}
+          </h2>
+          <h2 className="flex">
+            <AiOutlineDollar className="text-2xl mr-2" />
+            Salary : {salary}
+          </h2>
+        </div>
         <div className="card-actions">
-          <button className="btn btn-primary">View Details</button>
+          <button className="btn  text-white bg-gradient-to-r from-[#7E90FE] to-[#9873FF]">
+            View Details
+          </button>
         </div>
       </div>
     </div>
